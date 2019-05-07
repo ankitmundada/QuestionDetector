@@ -2,11 +2,8 @@
 This is small experiment of using Language Models for sentence tokenization and Question detection
 
 
-# StringAi Assignment
-
-
 # Objective 
-****----------
+----------
 
 Given a text blob ***T***, identify all the questions ***Q_i*** in it. 
 
@@ -24,6 +21,8 @@ The problem has to be broken into two sub-problems:
     For each sentence *S_i* obtained from above, check if it is a question or not.
 ****
 ****
+
+
 # Methodologies
 ----------
 
@@ -31,10 +30,12 @@ The problem has to be broken into two sub-problems:
 ## *Language Model based approach:*
 
 *Basic Idea*
+
 We can extend the training corpus of Language Model to not just include words or characters, but ‘Question Mark ( **?** )’ and ‘End-Of-The-Sentence ( **|** ) tokens as well. 
 **
 *Language Models*
-For each sub-problem in [+StringAi Assignment: Approach](https://paper.dropbox.com/doc/StringAi-Assignment-Approach-SYGyKzf2dLdFv055dReDS#:uid=894719539795993548318257&amp;h2=Approach), a separate  LM is required.
+
+For each sub-problem in , a separate  LM is required.
 
     1. ***LM_s*** (LM for *Sentence Tokenization*): trained on a corpus in which all the Sentence-End-Punctuation Marks (Question Mark, Period, Exclamation Mark etc.) are replaced with a PIPE token
     2. ***LM_q*** (LM for Question Identification): trained on a corpus in which all the Sentence-End-Punctuation Marks except Question Mark are replaced with a PIPE token.  Question Mark is kept as it is.
@@ -144,6 +145,3 @@ https://github.com/ankitmundada/QuestionDetector/blob/master/sample_outputs1.csv
 
 
 *Please Note: The results are very preliminary, since the models are trained on very small datasets.* 
-
-
-
