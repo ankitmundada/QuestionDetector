@@ -2,11 +2,8 @@
 This is small experiment of using Language Models for sentence tokenization and Question detection
 
 
-# StringAi Assignment
-
-
 # Objective 
-****----------
+----------
 
 Given a text blob ***T***, identify all the questions ***Q_i*** in it. 
 
@@ -144,6 +141,3 @@ https://github.com/ankitmundada/QuestionDetector/blob/master/sample_outputs1.csv
 
 
 *Please Note: The results are very preliminary, since the models are trained on very small datasets.* 
-
-
-
