@@ -62,6 +62,14 @@ def get_questions(all_sents, lm):
 
 if __name__ == "__main__":
 
+    import re
+    from collections import OrderedDict 
+    patterns = OrderedDict()
+    patterns['alphanum_word'] = (re.compile(r'\S*\d+\S*'), ' N ') # Anything with a number
+    patterns['re_end_puncts'] = (re.compile(r'[?!.]+'), ' | ')
+    patterns['not_alphanum_eos'] = (re.compile(r"[^a-zN|]+"), ' ')
+    patterns['re_multi_space'] = (re.compile(r'\s{2,}'), ' ')
+
     global args
     parser = argparse.ArgumentParser(description='Finds questions in unpunctuated raw text')
     parser.add_argument('--text', type=str, help='Input text to be processed')
@@ -76,11 +84,16 @@ if __name__ == "__main__":
     lm_s = kenlm.Model(args.lm_s)
     lm_q = kenlm.Model(args.lm_q)
 
+    samples = []
     if args.text:
-        samples = [args.text]
+        samples.append(args.text)
     elif args.input_file:
         with open(args.input_file, 'r') as inps:
-            samples = [l.strip() for l in inps.readlines()]
+            for l in inps.readlines():
+                l = l.strip().lower()
+                for k, v in patterns.items():
+                    l = v[0].sub(v[1], l)
+                samples.append(l)
 
     if args.output_file:
         outs = open(args.output_file, 'a')
