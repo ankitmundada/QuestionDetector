@@ -84,6 +84,7 @@ if __name__ == "__main__":
 
     if args.output_file:
         outs = open(args.output_file, 'a')
+        outs.write("Sample, Detected sentences, Detected questions\n")
 
     for i, text in enumerate(samples):
         # Sentence Tokenization
@@ -93,7 +94,7 @@ if __name__ == "__main__":
         print("\n#{} Sample: {}\n\nSentences:\n{}\n\nQuestions:\n{}\n"\
                 .format(i, text, '\n'.join(all_sents), '\n'.join(ques)))
         if args.output_file:
-            outs.write("{},{},{}\n".format(text, '--'.join(all_sents), '--'.join(ques)))
+            outs.write("{},{},{}\n".format(text, ' | '.join(all_sents), ' | '.join(ques)))
 
     if args.output_file:
         outs.close()

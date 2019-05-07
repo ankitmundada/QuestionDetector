@@ -1,5 +1,6 @@
+Sample, Detected sentences, Detected questions
 what is your name,what is your name,what is your name ?
-which game do you have it is really nice,which game do you have--it is really nice,which game do you have ?
+which game do you have it is really nice,which game do you have | it is really nice,which game do you have ?
 this is not a question,this is not a question,
-is this a question yes it is,is this a question--yes it is,
+is this a question yes it is,is this a question | yes it is,
 this is the fifth line,this is the fifth line,
